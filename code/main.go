@@ -43,6 +43,10 @@ func main() {
 		handlers.CardHandler())
 
 	r := gin.Default()
+	
+	// gin日志收集
+	r.Use(utils.LoggerMiddleware(), gin.Recovery())
+
 	r.GET("/ping", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"message": "pong",
