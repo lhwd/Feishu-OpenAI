@@ -25,15 +25,15 @@ func LogInit() {
 func LoggerMiddleware() gin.HandlerFunc {
 	logClient := logrus.New()
 
-	//logrus的输出
-	src, err := os.OpenFile("./gin_info.log", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0644)
-	if err != nil {
-		fmt.Println("open logrus log err, err is ", err)
-	}
-	logClient.Out = src
+	////logrus的输出
+	//src, err := os.OpenFile("./gin_info.log", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0644)
+	//if err != nil {
+	//	fmt.Println("open logrus log err, err is ", err)
+	//}
+	//logClient.Out = src
 	logClient.SetLevel(logrus.TraceLevel)
 	apiLogPath := "api.log"
-	logWriter, err := rotatelogs.New(
+	logWriter, _ := rotatelogs.New(
 		apiLogPath+".%Y-%m-%d-%H-%M.log",
 		rotatelogs.WithLinkName(apiLogPath),       // 生成软链，指向最新日志文件
 		rotatelogs.WithMaxAge(7*24*time.Hour),     // 文件最大保存时间
