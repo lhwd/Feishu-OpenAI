@@ -3,10 +3,10 @@ package main
 import (
 	"context"
 	"log"
-
 	"start-feishubot/handlers"
 	"start-feishubot/initialization"
 	"start-feishubot/services/openai"
+	"start-feishubot/utils"
 
 	"github.com/gin-gonic/gin"
 	sdkginext "github.com/larksuite/oapi-sdk-gin"
@@ -21,6 +21,9 @@ var (
 )
 
 func main() {
+	// 增加初始化日志
+	utils.LogInit()
+
 	initialization.InitRoleList()
 	pflag.Parse()
 	config := initialization.LoadConfig(*cfg)
