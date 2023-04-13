@@ -26,7 +26,7 @@ func LoggerMiddleware() gin.HandlerFunc {
 	logClient := logrus.New()
 
 	//logrus的输出
-	src, err := os.OpenFile("./gin_info.log", os.O_CREATE|os.O_APPEND|os.O_WRONLY, os.ModeAppend)
+	src, err := os.OpenFile("./gin_info.log", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0644)
 	if err != nil {
 		fmt.Println("open logrus log err, err is ", err)
 	}
